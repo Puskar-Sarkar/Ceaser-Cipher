@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include<string.h>
+void encrypt(char msg[], int key){
+    for(int i=0; msg[i]!='\0';++i){
+        char ch = msg[i];
+        if(ch >= 'A' && ch <= 'Z'){
+            ch = (ch - 'A' + key)%26 + 'A';
+        }
+        else if(ch >= 'a' && ch <= 'z'){
+            ch = (ch - 'a' + key)%26 + 'a';
+        }
+        msg[i] = ch;
+    }
+}
+void decrypt(char msg[], int key){
+    for(int i=0; msg[i]!='\0';++i){
+        char ch = msg[i];
+        if(ch >= 'A' && ch <= 'Z'){
+            ch = (ch - 'A' - key + 26)%26 + 'A';
+        }
+        else if(ch >= 'a' && ch <= 'z'){
+            ch = (ch - 'a' - key + 26)%26 + 'a';
+        }
+        msg[i] = ch;
+    }
+}
+int main()
+{
+    char msg[100];
+    int key;
+    printf("Enter a message to encrypt: ");
+    fgets(msg,sizeof(msg),stdin);
+    msg[strcspn(msg,"\n")]=0;
+    printf("Enter key: ");
+    scanf("%d",&key);
+    encrypt(msg,key);
+    printf("Encrypted msg: %s",msg);
+    decrypt(msg,key);
+    printf("Decrypted msg: %s",msg);
+    return 0;
+}
