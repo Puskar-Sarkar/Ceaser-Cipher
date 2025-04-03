@@ -33,7 +33,7 @@ Output: KHOOR
 ## Live Demo
 This project includes an interactive HTML page with JavaScript that allows you to try the Caesar Cipher in action.
 
-# MIT License
+# License
 
 ```
 MIT License
